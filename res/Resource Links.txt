@@ -1,0 +1,23 @@
+Resource Links:
+
+Datasets:
+Pride and Prejudice - https://www.gutenberg.org/files/1342/1342-0.txt
+Sense and Sensibility - http://www.gutenberg.org/cache/epub/161/pg161.txt
+
+
+Back-off
+https://rstudio-pubs-static.s3.amazonaws.com/271652_1525c0598da74774bfa4047803cee0d5.html
+
+Turing Score
+http://www.cse.iitd.ac.in/~mausam/courses/csl772/autumn2014/lectures/07-lm.pdf
+https://rpubs.com/leomak/TextPrediction_KBO_Katz_Good-Turing
+
+
+Interpolation, Perplexity
+https://tech.paayi.com/nlp-perplexity-and-smoothing-in-python
+
+N-grams Example:
+https://www.pythonprogramming.in/generate-the-n-grams-for-the-given-sentence-using-nltk-or-textblob.html
+
+Extras
+https://medium.com/@theflyingmantis/basics-of-nlp-2-266748a40a3a

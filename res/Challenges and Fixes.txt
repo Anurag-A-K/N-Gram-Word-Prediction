@@ -1,0 +1,17 @@
+Challenges:
+
+Virtual Environment Issues
+Links used: 
+https://stackoverflow.com/questions/35017160/how-to-use-virtualenv-with-python
+
+Read/Write Permissions For Shell Execution
+Stack Overflow - https://stackoverflow.com/questions/26696751/mac-osx-cmd-works-from-command-line-fails-from-php-shell-exec
+
+Corner Cases of new words - Can be fixed by extensive corpus analysis
+Generating parameters time consuming in interpolation.
+https://stackoverflow.com/questions/17568329/weightage-for-interpolation
+
+Errors:
+Invalidity Error Message not working, flag issues.
+Memory Error - Not Fixed, Garbage collector required
+Fetching Error - Data fetched is wrong but server output log shows correct values for Correct and Wrong prediction numbers

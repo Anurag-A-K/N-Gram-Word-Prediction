@@ -1,0 +1,5 @@
+Total Word Prdictions: 123678
+Correct Prdictions: 104071
+Wrong Prdictions: 19607
+ACCURACY: 84.14673587865263%
+Perplexity: 5.793418801842306e-10

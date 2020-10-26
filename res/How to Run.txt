@@ -1,0 +1,15 @@
+Works on MacOS/Linux, Windows not tested.
+
+Navigate to V-EN (optional):
+
+cd
+source work/bin/activate
+
+Navigate to Folder:
+
+cd Desktop/NLPJ
+php -S localhost:9000
+
+Go to Browser and:
+
+http://localhost:9000

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLP-J</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        h5{
+            margin-bottom: 0rem;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark justify-content-between" style="background-color: lightcoral;">
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#" style="font-size: 2.2rem; font-weight: bold;">N-Gram Predictor</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container" style="margin-top: 40px;">
+        <div class="row justify-contents-center">
+            <div class="col-6" style="border-right: 2px solid blue;">
+                <div style="margin: 15px;" class="row">
+                    <h3 style="width: 100%; text-align: center;">About the Project</h3>
+                    <div style="margin-top: 10px; background-color: coral; height: 2px; width: 35%; margin: auto;"></div>
+                </div>
+                <div style="margin: 15px;" class="row">
+                    <p style="width: 100%; text-align: justify;">This is a n-Gram based word predictor which uses upto 4 grams.  <br>
+                        Corpora Used (Jane Austen Novels):<ul><li>Pride and Prejudice</li><li>Sense and Sensibility</li></ul>
+                        The corpus is pre-processed by removing all the white spaces and other symbols and n-Grams are generated. The sentence that is given as input is split into tokens and our prediction algorithm predicts the next word using Good-Turing frequency estimation and two smoothing algorithms Backoff and Interpolation.</p>
+                </div>
+                <div style="margin: 15px;" class="row">
+                    <h3 style="width: 100%; text-align: center;">Team Members</h3>
+                    <div style="margin-top: 10px; background-color: coral; height: 2px; width: 30%; margin: auto;"></div>
+                </div>
+                <div style="margin: 15px 15px 0px 15px;" class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Registration No.</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Anurag A</td>
+                                <td>17BCE0544</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Nigel F</td>
+                                <td>17BCE0515</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-6">
+                <div style="margin: 15px;">
+                    <div>
+                        <label for="exampleInputEmail1" style="width: 100%;text-align:center;"><h4>Prediction</h4></label>
+                        <input name="inputString" type="text" class="form-control" id="inputString" aria-describedby="help" placeholder="Enter string, min 3 words.">
+                    </div>
+                    <div class="row" style="text-align: center; margin-top: 20px;">
+                        <div class="col-5" style="margin-top: 10px;">
+                            <button style="width: 150px;" id="backOff" class="btn btn-primary">BackOff</button>
+                        </div>
+                        <div class="col-2">
+                            <div id="lottie"></div>
+                        </div>
+                        <div class="col-5" style="margin-top: 10px;">
+                            <button style="width: 150px;" id="interpolation" class="btn btn-primary">Interpolation</button>
+                        </div>
+                    </div>
+                    <div id="stats" class="row justify-contents-center" style="margin-top: 20px;display: none;">
+                        <div class="col-10 offset-1 card" style="background-color:lightskyblue; padding: 10px;">
+                            <h3 style="text-align: center;">Next Word Prediction: <span id="prediction"><u>the</u></span></h5>
+                        </div>
+                        <div class="col-10 offset-1 card" style="margin-top:10px;padding: 8px;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Total Predictions</h5>
+                                </div>
+                                <div class="col-6" style="text-align: end;">
+                                    <h5><span id="totalPredictions" style="background-color: lightgreen; padding: 5px;">123678</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-10 offset-1 card" style="margin-top:10px;padding: 8px;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Correct Predictions</h5>
+                                </div>
+                                <div class="col-6" style="text-align: end;">
+                                    <h5><span id="correctPredictions" style="background-color: lightgreen; padding: 5px;">107488</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-10 offset-1 card" style="margin-top:10px;padding: 8px;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Wrong Predictions</h5>
+                                </div>
+                                <div class="col-6" style="text-align: end;">
+                                    <h5><span id="wrongPredictions" style="background-color: lightgreen; padding: 5px;">16190</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-10 offset-1 card" style="margin-top:10px;padding: 8px;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Accuracy</h5>
+                                </div>
+                                <div class="col-6" style="text-align: end;">
+                                    <h5><span id="accuracy" style="background-color: lightgreen; padding: 5px;">86.9095%</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-10 offset-1 card" style="margin-top:10px;padding: 8px;">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Perplexity</h5>
+                                </div>
+                                <div class="col-6" style="text-align: end;">
+                                    <h5><span id="perplexity" style="background-color: lightgreen; padding: 5px;">0.187385060</span></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.8/lottie.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+    lottie.loadAnimation({
+            container: document.getElementById('lottie'), // Required
+            path: 'assets/loading.json', // Required
+            renderer: 'svg', // Required
+            loop: true, // Optional
+            autoplay: true, // Optional
+            name: "Hello World", // Name for future reference. Optional.
+        });
+    $('#lottie').hide();
+    $('#backOff').on('click', function () {
+            input = $('input[name=inputString]').val();
+            console.log($('input[name=inputString]').val());
+
+            $('#lottie').show();
+            $("#stats").hide();
+
+            $.ajax({
+                url: "parse.php",
+                type: 'POST',
+                data:{
+                    "inputString":input
+                }
+            })
+            .done(function (data) {
+                obj = JSON.parse(data);
+                $("#prediction").html("<u>"+obj.prediction+"</u>");
+                $("#totalPredictions").html(obj.totalPredictions);
+                $("#correctPredictions").html(obj.correctPredictions);
+                $("#wrongPredictions").html(obj.wrongPredictions);
+                acc = parseFloat(obj.accuracy).toFixed(5);
+                $("#accuracy").html(acc+"%");
+                perp = parseFloat(obj.perplexity).toFixed(5);
+                $("#perplexity").html(perp+"");
+                $("#stats").show();
+                console.log(obj.prediction);
+            })
+            .fail(function (error) {
+                console.log("Error");
+            })
+            .always(function () {
+                $('#lottie').hide();
+            });
+        });
+
+        $('#interpolation').on('click', function () {
+                input = $('input[name=inputString]').val();
+                console.log($('input[name=inputString]').val());
+                // Inmediatly show your bar
+                $('#lottie').show();
+                $("#stats").hide();
+
+                $.ajax({
+                    url: "parseInterpolation.php",
+                    type: 'POST',
+                    data: {
+                        "inputString": input
+                    }
+                })
+                    .done(function (data) {
+                        obj = JSON.parse(data);
+                        $("#prediction").html("<u>" + obj.prediction + "</u>");
+                        $("#totalPredictions").html(obj.totalPredictions);
+                        $("#correctPredictions").html(obj.correctPredictions);
+                        $("#wrongPredictions").html(obj.wrongPredictions);
+                        acc = parseFloat(obj.accuracy).toFixed(5);
+                        $("#accuracy").html(acc + "%");
+                        perp = parseFloat(obj.perplexity.toString().substring(0,7))*(0.1).toFixed(5);
+                        $("#perplexity").html(perp + "");
+                        $("#stats").show();
+                        console.log(obj.prediction);
+                    })
+                    .fail(function (error) {
+                        console.log("Error");
+                    })
+                    .always(function () {
+                        $('#lottie').hide();
+                    });
+            });
+    
+</script>
+</html>
